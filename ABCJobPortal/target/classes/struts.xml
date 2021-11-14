@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="false" />
+	<constant name="struts.devMode" value="false" />
+	<package name="default" namespace="/" extends="struts-default">
+
+		<default-action-ref name="index" />
+
+		<action name="index">
+			<result>/jsp/index.jsp</result>
+		</action>
+
+		<action name="login">
+			<result>/jsp/login.jsp</result>
+		</action>
+
+		<action name="loginprocess"
+			class="action.LoginAction" method="execute">
+			<result name="login_success">/jsp/homepage.jsp</result>
+			<result name="login_fail">/jsp/login.jsp</result>
+		</action>
+
+
+		<action name="logout"
+			class="action.LoginAction" method="logout">
+			<result name="success">jsp/login.jsp</result>
+		</action>
+
+		
+		<action name="forgetpassword">
+			<result>jsp/forgetpassword.jsp</result>
+		</action>
+		
+		<action name="findemail"
+			class="action.LoginAction" method="findemail">
+			<result name="success">jsp/changePassword.jsp</result>
+			<result name="fail">jsp/emailnotfound.jsp</result>
+		</action>
+		
+
+		<action name="forgetPasswordProcess"
+			class="action.LoginAction" method="updatePassword">
+			<result name="success">jsp/login.jsp</result>
+		</action>
+		
+		
+		<action name="register">
+			<result>/jsp/register.jsp</result>
+		</action>
+
+
+		<action name="regProcess"
+			class="action.RegisterAction" method="execute">
+			<result name="reg_success">/jsp/reg_success.jsp</result>
+			<result name="reg_fail">/jsp/register.jsp</result>
+		</action>
+
+		<action name="thankyou"
+			class="action.ThankyouAction" method="execute">
+			<result name="login">jsp/login.jsp</result>
+		</action>
+		
+		<action name="profile" class="action.ProfileAction" method="execute">
+			<result name="success">/jsp/profile.jsp</result>
+			<result name="error">/jsp/login.jsp</result>
+		</action>
+		
+		<action name="updateProfile" class="action.ProfileAction" method="execute">
+			<result name="success">/jsp/updateprofile.jsp</result>
+			<result name="error">/jsp/login.jsp</result>
+		</action>
+		
+		
+		<action name="updateProfileProcess" class="action.ProfileAction" method="updateUser">
+			<result name="upd_success">/jsp/profile.jsp</result>
+			<result name="upd_fail">/jsp/updateprofile.jsp</result>
+		</action>
+		
+		
+		<action name="search" class="action.SearchAction" method="execute">
+			<result name="search_success">/jsp/search_result.jsp</result>
+		</action>
+		
+		
+		<action name="viewProfile" class="action.ViewProfileAction" method="execute">
+			<result name="success">/jsp/viewprofile.jsp</result>
+		</action>
+		
+		<action name="manageUser" class="action.ManageUser" method="execute">
+			<result name="success">/jsp/alluser.jsp</result>
+		</action>
+
+
+		<action name="deleteUser" class="action.ManageUser" method="deleteUser">
+			<result name="del_success">/jsp/deletesuccess.jsp</result>
+		</action>
+
+
+
+	</package>
+</struts>
